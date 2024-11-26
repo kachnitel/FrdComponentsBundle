@@ -1,0 +1,20 @@
+{
+  "type": "symfony-bundle",
+  "name": "frd/components-bundle",
+  "description": "TODO: A Symfony bundle for components",
+  "require": {
+    "php": ">=8.2",
+    "symfony/framework-bundle": "^7.0",
+    "symfony/ux-twig-component": "^2.21"
+  },
+  "autoload": {
+    "psr-4": {
+      "Frd\\ComponentsBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Frd\\ComponentsBundle\\Tests\\": "tests/"
+    }
+  }
+}
