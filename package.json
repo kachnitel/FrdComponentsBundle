@@ -1,0 +1,28 @@
+{
+  "name": "@frd/components-bundle",
+  "main": "",
+  "version": "0.0.1",
+  "symfony": {
+    "controllers": {
+      "dialog": {
+        "main": "js/controllers/dialog_controller.js",
+        "enabled": true
+      },
+      "dialog-trigger": {
+        "main": "js/controllers/dialog-trigger_controller.js",
+        "enabled": true
+      },
+      "calendar": {
+        "autoimport": {
+          "@frd/components-bundle/css/calendar.css": true
+        }
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  }
+}
