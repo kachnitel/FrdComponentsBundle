@@ -4,7 +4,7 @@
   type="button"
   {# TODO: test without data-model-id here, what happens if not passed - is it clearly requested? #}
   data-dialog-id="{{ dialogId }}"
-  {{ attributes.defaults(stimulus_controller('frd/components-bundle/dialog-trigger')) }}
+  {{ attributes.defaults(stimulus_controller('@frd/components-bundle/dialog-trigger')) }}
 >
   {% block content -%}
     {{- icon -}}
