@@ -1,0 +1,10 @@
+<span
+  {{ attributes }}
+  data-poll="delay(1000)|$render"
+>
+  {% block content %}
+    {# You can override this block to customize duration display #}
+    {# If kachnitel/duration-bundle is installed, you can use: {{ this.duration|duration }} #}
+    {{ this.duration }}
+  {% endblock %}
+</span>

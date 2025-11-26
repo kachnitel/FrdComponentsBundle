@@ -1,0 +1,16 @@
+<button
+  class="{{ attributes.all.class|default('btn ' ~ attributes.all.btnClass|default('btn-primary')) }}"
+  data-action="live#emit"
+  data-live-event-param="{{ 'name(' ~ target ~ ')|' }}{{ action }}"
+  {{ attributes }}
+>
+  {% block content %}
+    {% if icon is not empty %}
+      <span class="material-icons">{{ icon }}</span>
+    {% endif %}
+
+    {% if label is not empty %}
+      <span>{{ label }}</span>
+    {% endif %}
+  {% endblock %}
+</button>
