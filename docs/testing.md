@@ -15,9 +15,11 @@ The test suite includes:
 1. **Bundle Registration Tests** - Verifies the bundle is properly registered in the Symfony kernel
 2. **Component Factory Tests** - Ensures Twig Component services are available
 3. **Component Creation Tests** - Tests that all components can be created using the `FRD:` namespace:
-   - `FRD:Dialog`
-   - `FRD:DialogTrigger`
-   - `FRD:Calendar`
+   - `FRD:Dialog` - Modal dialog component
+   - `FRD:DialogTrigger` - Button to trigger dialogs
+   - `FRD:Calendar` - Calendar component
+   - `FRD:Timer` - Live Component timer
+   - `FRD:LiveEmitTrigger` - Live Component event emitter
 
 ## Using Components in Your Application
 
@@ -34,6 +36,16 @@ The test suite includes:
 
 {# Use Calendar component #}
 <twig:FRD:Calendar />
+
+{# Use Live Component Timer #}
+<twig:FRD:Timer startDuration="0" />
+
+{# Use Live Component Event Emitter #}
+<twig:FRD:LiveEmitTrigger
+    target="MyComponent"
+    action="save"
+    label="Save Changes"
+/>
 ```
 
 ### With Component Props

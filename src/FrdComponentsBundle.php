@@ -1,6 +1,11 @@
 <?php
 namespace Frd\ComponentsBundle;
 
+use Frd\ComponentsBundle\Components\Calendar;
+use Frd\ComponentsBundle\Components\Dialog;
+use Frd\ComponentsBundle\Components\DialogTrigger;
+use Frd\ComponentsBundle\Components\LiveEmitTrigger;
+use Frd\ComponentsBundle\Components\Timer;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -11,6 +16,32 @@ class FrdComponentsBundle extends AbstractBundle
     public function getPath(): string
     {
         return \dirname(__DIR__);
+    }
+
+    public function build(ContainerBuilder $container): void
+    {
+        parent::build($container);
+
+        // Register component classes
+        $container->register(Dialog::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(DialogTrigger::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(Calendar::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(Timer::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(LiveEmitTrigger::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
     }
 
     public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void

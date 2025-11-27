@@ -52,6 +52,8 @@ class BundleInitializationTest extends KernelTestCase
         $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Dialog'));
         $this->assertTrue($container->has('Frd\ComponentsBundle\Components\DialogTrigger'));
         $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Calendar'));
+        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Timer'));
+        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\LiveEmitTrigger'));
 
         /** @var ComponentFactory $componentFactory */
         $componentFactory = $container->get('ux.twig_component.component_factory');
@@ -65,5 +67,11 @@ class BundleInitializationTest extends KernelTestCase
 
         $calendar = $componentFactory->get('FRD:Calendar');
         $this->assertNotNull($calendar);
+
+        $timer = $componentFactory->get('FRD:Timer');
+        $this->assertNotNull($timer);
+
+        $liveEmitTrigger = $componentFactory->get('FRD:LiveEmitTrigger');
+        $this->assertNotNull($liveEmitTrigger);
     }
 }
