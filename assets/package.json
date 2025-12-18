@@ -11,12 +11,6 @@
       "dialog-trigger": {
         "main": "js/controllers/dialog-trigger_controller.js",
         "enabled": true
-      },
-      "calendar": {
-        "enabled": true,
-        "autoimport": {
-          "@frd/components-bundle/css/calendar.css": true
-        }
       }
     },
     "importmap": {

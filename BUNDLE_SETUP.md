@@ -63,8 +63,11 @@ vendor/bin/phpunit --testdox
 ✅ DialogTrigger component can be created
 ✅ DialogTrigger with label
 ✅ DialogTrigger with icon
+✅ Timer component can be created (Live Component)
+✅ LiveEmitTrigger component can be created (Live Component)
+✅ LiveEmitTrigger with target
 
-Tests: 11, Assertions: 20 ✅
+Tests: 14, Assertions: 28 ✅
 ```
 
 ## Usage in Your Application
@@ -147,9 +150,3 @@ FrdComponentsBundle/
 3. **Autoconfiguration**: Components are automatically tagged and registered via `setAutoconfigured(true)`
 4. **Stimulus Integration**: Components can use Stimulus controllers via `stimulus_controller()` function
 
-## Next Steps
-
-1. Implement remaining component templates
-2. Add more component tests
-3. Document component usage in detail
-4. Add Live Component support where needed
