@@ -1,12 +1,12 @@
 <?php
 
-namespace Frd\ComponentsBundle\Tests\Components;
+namespace Kachnitel\ComponentsBundle\Tests\Components;
 
 class DialogTest extends ComponentTestCase
 {
     public function testDialogComponentCanBeCreated(): void
     {
-        $component = $this->factory->get('FRD:Dialog');
+        $component = $this->factory->get('K:Components:Dialog');
         $this->assertNotNull($component);
 
         // Set required properties
@@ -16,7 +16,7 @@ class DialogTest extends ComponentTestCase
 
     public function testDialogWithSize(): void
     {
-        $component = $this->factory->get('FRD:Dialog');
+        $component = $this->factory->get('K:Components:Dialog');
         $component->id = 'dialog-1';
         $component->size = 'lg';
 
@@ -25,7 +25,7 @@ class DialogTest extends ComponentTestCase
 
     public function testDialogWithLabel(): void
     {
-        $component = $this->factory->get('FRD:Dialog');
+        $component = $this->factory->get('K:Components:Dialog');
         $component->id = 'dialog-2';
         $component->label = 'Test Dialog Title';
 

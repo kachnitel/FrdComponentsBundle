@@ -1,12 +1,12 @@
 <?php
 
-namespace Frd\ComponentsBundle\Tests\Components;
+namespace Kachnitel\ComponentsBundle\Tests\Components;
 
 class DialogTriggerTest extends ComponentTestCase
 {
     public function testDialogTriggerComponentCanBeCreated(): void
     {
-        $component = $this->factory->get('FRD:DialogTrigger');
+        $component = $this->factory->get('K:Components:DialogTrigger');
         $this->assertNotNull($component);
 
         // Set required properties
@@ -16,7 +16,7 @@ class DialogTriggerTest extends ComponentTestCase
 
     public function testDialogTriggerWithLabel(): void
     {
-        $component = $this->factory->get('FRD:DialogTrigger');
+        $component = $this->factory->get('K:Components:DialogTrigger');
         $component->dialogId = 'dialog-1';
         $component->label = 'Open Dialog';
 
@@ -25,7 +25,7 @@ class DialogTriggerTest extends ComponentTestCase
 
     public function testDialogTriggerWithIcon(): void
     {
-        $component = $this->factory->get('FRD:DialogTrigger');
+        $component = $this->factory->get('K:Components:DialogTrigger');
         $component->dialogId = 'dialog-2';
         $component->icon = '🔔';
 

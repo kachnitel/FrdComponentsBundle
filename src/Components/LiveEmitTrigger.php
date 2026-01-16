@@ -1,12 +1,12 @@
 <?php
 
-namespace Frd\ComponentsBundle\Components;
+namespace Kachnitel\ComponentsBundle\Components;
 
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent('FRD:LiveEmitTrigger', template: '@FrdComponents/components/LiveEmitTrigger.html.twig')]
+#[AsLiveComponent('K:Components:LiveEmitTrigger', template: '@K/Components/LiveEmitTrigger.html.twig')]
 final class LiveEmitTrigger
 {
     use DefaultActionTrait;

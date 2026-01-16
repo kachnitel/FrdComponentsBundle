@@ -1,11 +1,18 @@
 {
   "type": "symfony-bundle",
-  "name": "frd/components-bundle",
-  "keywords": ["symfony-ux"],
-  "description": "TODO: A Symfony bundle for components",
+  "name": "kachnitel/components-bundle",
+  "keywords": ["symfony-ux", "twig-component", "dialog", "calendar", "timer"],
+  "authors": [
+    {
+      "name": "Ondrej Vana",
+      "email": "kachnitel@gmail.com"
+    }
+  ],
+  "description": "A Symfony bundle for reusable Twig components",
+  "license": "MIT",
   "require": {
     "php": ">=8.2",
-    "symfony/framework-bundle": "^7.0",
+    "symfony/framework-bundle": "^6.4|^7.0",
     "symfony/ux-twig-component": "^2.21",
     "symfony/ux-live-component": "^2.21",
     "symfony/stimulus-bundle": "^2.21"
@@ -19,12 +26,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Frd\\ComponentsBundle\\": "src/"
+      "Kachnitel\\ComponentsBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Frd\\ComponentsBundle\\Tests\\": "tests/"
+      "Kachnitel\\ComponentsBundle\\Tests\\": "tests/"
     }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .coverage"
   }
 }

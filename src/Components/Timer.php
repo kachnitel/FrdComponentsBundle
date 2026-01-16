@@ -1,13 +1,13 @@
 <?php
 
-namespace Frd\ComponentsBundle\Components;
+namespace Kachnitel\ComponentsBundle\Components;
 
 use DateTimeImmutable;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent('FRD:Timer', template: '@FrdComponents/components/Timer.html.twig')]
+#[AsLiveComponent('K:Components:Timer', template: '@K/Components/Timer.html.twig')]
 final class Timer
 {
     use DefaultActionTrait;

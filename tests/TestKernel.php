@@ -1,8 +1,8 @@
 <?php
 
-namespace Frd\ComponentsBundle\Tests;
+namespace Kachnitel\ComponentsBundle\Tests;
 
-use Frd\ComponentsBundle\FrdComponentsBundle;
+use Kachnitel\ComponentsBundle\KachnitelComponentsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\TwigBundle\TwigBundle;
@@ -25,7 +25,7 @@ class TestKernel extends Kernel
             new TwigComponentBundle(),
             new LiveComponentBundle(),
             new StimulusBundle(),
-            new FrdComponentsBundle(),
+            new KachnitelComponentsBundle(),
         ];
     }
 
@@ -46,11 +46,11 @@ class TestKernel extends Kernel
 
     public function getCacheDir(): string
     {
-        return sys_get_temp_dir() . '/frd_components_bundle/cache/' . spl_object_hash($this);
+        return sys_get_temp_dir() . '/kachnitel_components_bundle/cache/' . spl_object_hash($this);
     }
 
     public function getLogDir(): string
     {
-        return sys_get_temp_dir() . '/frd_components_bundle/logs';
+        return sys_get_temp_dir() . '/kachnitel_components_bundle/logs';
     }
 }

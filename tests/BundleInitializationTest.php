@@ -1,6 +1,6 @@
 <?php
 
-namespace Frd\ComponentsBundle\Tests;
+namespace Kachnitel\ComponentsBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\UX\TwigComponent\ComponentFactory;
@@ -13,6 +13,13 @@ class BundleInitializationTest extends KernelTestCase
         return TestKernel::class;
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        restore_exception_handler();
+    }
+
     public function testBundleIsRegistered(): void
     {
         self::bootKernel();
@@ -20,7 +27,7 @@ class BundleInitializationTest extends KernelTestCase
 
         $bundles = self::$kernel->getBundles();
 
-        $this->assertArrayHasKey('FrdComponentsBundle', $bundles);
+        $this->assertArrayHasKey('KachnitelComponentsBundle', $bundles);
     }
 
     public function testTwigComponentServiceIsAvailable(): void
@@ -49,29 +56,29 @@ class BundleInitializationTest extends KernelTestCase
         $container = self::getContainer();
 
         // Test that component services exist in the container
-        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Dialog'));
-        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\DialogTrigger'));
-        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Calendar'));
-        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\Timer'));
-        $this->assertTrue($container->has('Frd\ComponentsBundle\Components\LiveEmitTrigger'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Dialog'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\DialogTrigger'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Calendar'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Timer'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\LiveEmitTrigger'));
 
         /** @var ComponentFactory $componentFactory */
         $componentFactory = $container->get('ux.twig_component.component_factory');
 
         // Test that components can be created via the factory
-        $dialog = $componentFactory->get('FRD:Dialog');
+        $dialog = $componentFactory->get('K:Components:Dialog');
         $this->assertNotNull($dialog);
 
-        $dialogTrigger = $componentFactory->get('FRD:DialogTrigger');
+        $dialogTrigger = $componentFactory->get('K:Components:DialogTrigger');
         $this->assertNotNull($dialogTrigger);
 
-        $calendar = $componentFactory->get('FRD:Calendar');
+        $calendar = $componentFactory->get('K:Components:Calendar');
         $this->assertNotNull($calendar);
 
-        $timer = $componentFactory->get('FRD:Timer');
+        $timer = $componentFactory->get('K:Components:Timer');
         $this->assertNotNull($timer);
 
-        $liveEmitTrigger = $componentFactory->get('FRD:LiveEmitTrigger');
+        $liveEmitTrigger = $componentFactory->get('K:Components:LiveEmitTrigger');
         $this->assertNotNull($liveEmitTrigger);
     }
 }

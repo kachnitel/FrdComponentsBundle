@@ -1,10 +1,10 @@
 <?php
 
-namespace Frd\ComponentsBundle\Components;
+namespace Kachnitel\ComponentsBundle\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('FRD:Dialog', template: '@FrdComponents/components/Dialog.html.twig')]
+#[AsTwigComponent('K:Components:Dialog', template: '@K/Components/Dialog.html.twig')]
 class Dialog
 {
     public string $id;

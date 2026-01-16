@@ -1,18 +1,18 @@
 <?php
 
-namespace Frd\ComponentsBundle\Tests\Components;
+namespace Kachnitel\ComponentsBundle\Tests\Components;
 
 class LiveEmitTriggerTest extends ComponentTestCase
 {
     public function testLiveEmitTriggerComponentCanBeCreated(): void
     {
-        $component = $this->factory->get('FRD:LiveEmitTrigger');
+        $component = $this->factory->get('K:Components:LiveEmitTrigger');
         $this->assertNotNull($component);
     }
 
     public function testLiveEmitTriggerWithTarget(): void
     {
-        $component = $this->factory->get('FRD:LiveEmitTrigger');
+        $component = $this->factory->get('K:Components:LiveEmitTrigger');
         $component->target = 'MyComponent';
         $component->action = 'refresh';
 

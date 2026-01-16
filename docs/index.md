@@ -1,11 +1,32 @@
-# Components Summary
+# Kachnitel Components Bundle
 
-This bundle provides a set of components that can be used to build a web application. The components are designed to be used in a modular fashion, allowing you to pick and choose the components you need for your application.
+A collection of reusable Twig and Live Components for Symfony applications.
 
-## Available Components
+## Twig Components
 
-- [Calendar](components/Calendar.md): Brief description of Calendar.
-- [Dialog](components/Dialog.md): Brief description of Dialog.
-- [DialogTrigger](components/DialogTrigger.md): Brief description of DialogTrigger.
+Standard Twig components that render HTML with customizable blocks and attributes.
 
-For more details, please refer to the individual component documentation linked above.
+- [Calendar](components/Calendar.md) - Monthly calendar grid with customizable day content
+- [Dialog](components/Dialog.md) - Native HTML `<dialog>` wrapper with Stimulus controller
+- [DialogTrigger](components/DialogTrigger.md) - Button to trigger Dialog opening
+
+## Live Components
+
+Symfony UX Live Components that provide interactive functionality with server-side state.
+
+- [Timer](components/Timer.md) - Auto-updating duration timer with polling
+- [LiveEmitTrigger](components/LiveEmitTrigger.md) - Button to emit events to other Live Components
+
+## Usage Pattern
+
+All components use the `K:Components:` namespace:
+
+```twig
+<twig:K:Components:ComponentName prop="value">
+  Content here
+</twig:K:Components:ComponentName>
+```
+
+## Development
+
+- [Testing](testing.md) - Running and writing tests

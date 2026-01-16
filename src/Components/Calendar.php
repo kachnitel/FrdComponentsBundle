@@ -1,10 +1,10 @@
 <?php
 
-namespace Frd\ComponentsBundle\Components;
+namespace Kachnitel\ComponentsBundle\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent('FRD:Calendar', template: '@FrdComponents/components/Calendar.html.twig')]
+#[AsTwigComponent('K:Components:Calendar', template: '@K/Components/Calendar.html.twig')]
 class Calendar
 {
     public int $year;

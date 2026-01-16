@@ -1,29 +1,69 @@
-# Flying Rubber Duck's Component bundle
+# Kachnitel Components Bundle
 
-This bundle provides a set of components that can be used to build a web application. The components are designed to be used in a modular fashion, allowing you to pick and choose the components you need for your application.
+A Symfony bundle providing reusable Twig and Live Components for common UI patterns.
 
-# Documentation
+## Installation
 
-See the [documentation](docs/index.md) for more details.
+```bash
+composer require kachnitel/components-bundle
+```
 
-# TODO:
+## Quick Start
 
-## Components
-- Basic form fields (own bundle ideally)
-- LiveAdmin (bundle eventually or right away?)
-  - A set of list/view/edit components that can be used to build a basic admin interface.
-  - Built entirely using LiveComponents
-- DataTable
-  - A component that displays a table of data.
-  - Supports sorting, filtering, and pagination.
-    - Filter per column, with
-      - date range filter for date columns,
-      - options for enum columns
-      - fulltext for text(&number?) columns
-      - design an interface for object filters, add library for doctrine filters (that requires doctrine and use its filters with simple config)
-  - Can be used with a variety of data sources (e.g. arrays, objects, etc.).
-- Agenda
-  - A component that displays a list of items in a calendar view.
-  - Items can be dragged and dropped to change the date/time.
-  - Toggle between "list" and "agenda" view, where the list view shows a list of items for each day,
-  while agenda shows items sized according to their duration and expand on hover (not mobile friendly).
+### Calendar
+
+Display a monthly calendar with custom content for each day:
+
+```twig
+<twig:K:Components:Calendar year="2024" month="1">
+  <twig:block name="dayContent">
+    {{ date }} - Your content here
+  </twig:block>
+</twig:K:Components:Calendar>
+```
+
+### Dialog
+
+Create modal dialogs with a trigger button:
+
+```twig
+<twig:K:Components:DialogTrigger dialogId="my-dialog" label="Open" />
+
+<twig:K:Components:Dialog id="my-dialog" label="My Dialog">
+  Dialog content here
+</twig:K:Components:Dialog>
+```
+
+### Timer (Live Component)
+
+Display a running timer that updates every second:
+
+```twig
+<twig:K:Components:Timer :startTime="timeEntry.startTime" />
+```
+
+### LiveEmitTrigger (Live Component)
+
+Emit events to other Live Components:
+
+```twig
+<twig:K:Components:LiveEmitTrigger target="MyApp:MyComponent" action="save" />
+```
+
+## Documentation
+
+See the [full documentation](docs/index.md) for detailed usage and options.
+
+## Available Components
+
+| Component | Type | Description |
+|-----------|------|-------------|
+| [Calendar](docs/components/Calendar.md) | Twig | Monthly calendar grid with customizable day content |
+| [Dialog](docs/components/Dialog.md) | Twig | Native HTML dialog wrapper with Stimulus controller |
+| [DialogTrigger](docs/components/DialogTrigger.md) | Twig | Button to open a Dialog component |
+| [Timer](docs/components/Timer.md) | Live | Auto-updating duration timer |
+| [LiveEmitTrigger](docs/components/LiveEmitTrigger.md) | Live | Button to emit events to Live Components |
+
+## License
+
+MIT

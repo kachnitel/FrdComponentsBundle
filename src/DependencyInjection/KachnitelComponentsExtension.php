@@ -1,6 +1,6 @@
 <?php
 
-namespace Frd\ComponentsBundle\DependencyInjection;
+namespace Kachnitel\ComponentsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class FrdComponentsExtension extends Extension implements PrependExtensionInterface
+class KachnitelComponentsExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -22,7 +22,7 @@ class FrdComponentsExtension extends Extension implements PrependExtensionInterf
         $container->prependExtensionConfig('twig_component', [
             'anonymous_template_directory' => 'components/',
             'defaults' => [
-                'Frd\\ComponentsBundle\\Components\\' => '@FrdComponents/components/',
+                'Kachnitel\\ComponentsBundle\\Components\\' => '@K/Components/',
             ],
         ]);
     }

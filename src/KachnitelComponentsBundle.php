@@ -1,17 +1,18 @@
 <?php
-namespace Frd\ComponentsBundle;
 
-use Frd\ComponentsBundle\Components\Calendar;
-use Frd\ComponentsBundle\Components\Dialog;
-use Frd\ComponentsBundle\Components\DialogTrigger;
-use Frd\ComponentsBundle\Components\LiveEmitTrigger;
-use Frd\ComponentsBundle\Components\Timer;
+namespace Kachnitel\ComponentsBundle;
+
+use Kachnitel\ComponentsBundle\Components\Calendar;
+use Kachnitel\ComponentsBundle\Components\Dialog;
+use Kachnitel\ComponentsBundle\Components\DialogTrigger;
+use Kachnitel\ComponentsBundle\Components\LiveEmitTrigger;
+use Kachnitel\ComponentsBundle\Components\Timer;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class FrdComponentsBundle extends AbstractBundle
+class KachnitelComponentsBundle extends AbstractBundle
 {
     public function getPath(): string
     {
@@ -49,7 +50,7 @@ class FrdComponentsBundle extends AbstractBundle
         // Register Twig paths
         $container->prependExtensionConfig('twig', [
             'paths' => [
-                $this->getPath() . '/templates' => 'FrdComponents',
+                $this->getPath() . '/templates' => 'K',
             ],
         ]);
 
@@ -61,7 +62,7 @@ class FrdComponentsBundle extends AbstractBundle
         $container->prependExtensionConfig('framework', [
             'asset_mapper' => [
                 'paths' => [
-                    __DIR__ . '/../assets' => '@frd/components-bundle',
+                    __DIR__ . '/../assets' => '@kachnitel/components-bundle',
                 ],
             ],
         ]);

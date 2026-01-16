@@ -1,23 +1,71 @@
 # DialogTrigger
 
-Used along with the `Dialog` component to trigger the dialog to open.
+A button component that opens a [Dialog](Dialog.md) component.
 
-## Usage
+## Quick Start
 
 ```twig
-  <twig:FrdComponents:DialogTrigger
-    dialogId="newCategoryDialog"
-    label="New category"
-  />
+<twig:K:Components:DialogTrigger dialogId="my-dialog" label="Open Dialog" />
 
-  <twig:FrdComponents:Dialog
-    id="newCategoryDialog"
-    label="New category"
-  >...</twig:FrdComponents:Dialog>
+<twig:K:Components:Dialog id="my-dialog" label="Dialog Title">
+  Dialog content
+</twig:K:Components:Dialog>
+```
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `dialogId` | string | Yes | - | ID of the Dialog component to open |
+| `label` | string | No | `''` | Text label for the button |
+| `icon` | string | No | `''` | Icon content (rendered before label) |
+
+## Blocks
+
+### `content`
+
+Override the default button content (icon + label):
+
+```twig
+<twig:K:Components:DialogTrigger dialogId="settings-dialog">
+  <twig:block name="content">
+    <svg><!-- custom icon --></svg>
+    <span>Settings</span>
+  </twig:block>
+</twig:K:Components:DialogTrigger>
 ```
 
 ## Events
 
-The dialog trigger uses a stimulus controller to fire event when used, before the dialog is opened.
+The trigger uses a Stimulus controller (`@kachnitel/components-bundle/dialog-trigger`) that dispatches:
 
-### `dialog.trigger`
+| Event | Description |
+|-------|-------------|
+| `dialog.trigger` | Fired when the trigger is clicked, before the dialog opens |
+
+<details>
+<summary>With Icon Example</summary>
+
+```twig
+<twig:K:Components:DialogTrigger
+  dialogId="add-item-dialog"
+  icon="+"
+  label="Add Item"
+/>
+```
+
+</details>
+
+<details>
+<summary>Custom Button Content</summary>
+
+```twig
+<twig:K:Components:DialogTrigger dialogId="confirm-delete" class="btn btn-danger">
+  <twig:block name="content">
+    <span class="material-icons">delete</span>
+    Delete
+  </twig:block>
+</twig:K:Components:DialogTrigger>
+```
+
+</details>

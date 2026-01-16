@@ -1,111 +1,64 @@
 # Testing
 
-This bundle includes a comprehensive test suite to ensure all components are properly registered and functional.
-
 ## Running Tests
 
 ```bash
+# Run all tests
+composer test
+
+# Or directly with PHPUnit
 vendor/bin/phpunit
+
+# With verbose output
+vendor/bin/phpunit --testdox
 ```
 
 ## Test Coverage
 
-The test suite includes:
+The test suite verifies:
 
-1. **Bundle Registration Tests** - Verifies the bundle is properly registered in the Symfony kernel
-2. **Component Factory Tests** - Ensures Twig Component services are available
-3. **Component Creation Tests** - Tests that all components can be created using the `FRD:` namespace:
-   - `FRD:Dialog` - Modal dialog component
-   - `FRD:DialogTrigger` - Button to trigger dialogs
-   - `FRD:Calendar` - Calendar component
-   - `FRD:Timer` - Live Component timer
-   - `FRD:LiveEmitTrigger` - Live Component event emitter
-
-## Using Components in Your Application
-
-### In Twig Templates
-
-```twig
-{# Use Dialog component #}
-<twig:FRD:Dialog id="my-dialog" label="Welcome Dialog">
-    <p>This is the dialog content.</p>
-</twig:FRD:Dialog>
-
-{# Use DialogTrigger component #}
-<twig:FRD:DialogTrigger dialogId="my-dialog" label="Open Dialog" />
-
-{# Use Calendar component #}
-<twig:FRD:Calendar />
-
-{# Use Live Component Timer #}
-<twig:FRD:Timer startDuration="0" />
-
-{# Use Live Component Event Emitter #}
-<twig:FRD:LiveEmitTrigger
-    target="MyComponent"
-    action="save"
-    label="Save Changes"
-/>
-```
-
-### With Component Props
-
-```twig
-{# Dialog with size #}
-<twig:FRD:Dialog id="large-dialog" size="lg" label="Large Dialog">
-    <p>This is a large dialog.</p>
-</twig:FRD:Dialog>
-
-{# DialogTrigger with icon #}
-<twig:FRD:DialogTrigger
-    dialogId="my-dialog"
-    icon="🔔"
-    label="Notifications"
-/>
-```
-
-## Test Structure
-
-- `/tests/TestKernel.php` - Minimal Symfony kernel for testing
-- `/tests/BundleInitializationTest.php` - Bundle registration tests
-- `/tests/Components/` - Individual component tests
-  - `DialogTest.php`
-  - `DialogTriggerTest.php`
-  - `CalendarTest.php`
+- Bundle registration in Symfony kernel
+- Twig Component factory availability
+- All components can be instantiated via the `K:Components:` namespace
 
 ## Adding New Component Tests
 
-When adding new components, create a test file in `/tests/Components/`:
+Extend `ComponentTestCase` for new component tests:
 
 ```php
 <?php
 
-namespace Frd\ComponentsBundle\Tests\Components;
+namespace Kachnitel\ComponentsBundle\Tests\Components;
 
-use Frd\ComponentsBundle\Tests\TestKernel;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\UX\TwigComponent\ComponentFactory;
-
-class YourComponentTest extends KernelTestCase
+class YourComponentTest extends ComponentTestCase
 {
-    private ComponentFactory $factory;
-
-    protected static function getKernelClass(): string
-    {
-        return TestKernel::class;
-    }
-
-    protected function setUp(): void
-    {
-        self::bootKernel();
-        $container = self::getContainer();
-        $this->factory = $container->get('ux.twig_component.component_factory');
-    }
-
     public function testYourComponentCanBeCreated(): void
     {
-        $component = $this->factory->get('FRD:YourComponent');
+        $component = $this->factory->get('K:Components:YourComponent');
         $this->assertNotNull($component);
     }
+
+    public function testYourComponentWithProps(): void
+    {
+        $component = $this->factory->get('K:Components:YourComponent');
+        $component->someProp = 'value';
+
+        $this->assertEquals('value', $component->someProp);
+    }
 }
+```
+
+## Test Structure
+
+```
+tests/
+├── TestKernel.php              # Minimal Symfony kernel
+├── BundleInitializationTest.php # Bundle & service registration
+└── Components/
+    ├── ComponentTestCase.php    # Base class with factory setup
+    ├── CalendarTest.php
+    ├── DialogTest.php
+    ├── DialogTriggerTest.php
+    ├── TimerTest.php
+    └── LiveEmitTriggerTest.php
 ```
