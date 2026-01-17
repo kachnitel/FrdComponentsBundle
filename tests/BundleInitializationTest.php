@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kachnitel\ComponentsBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -80,5 +82,19 @@ class BundleInitializationTest extends KernelTestCase
 
         $liveEmitTrigger = $componentFactory->get('K:Components:LiveEmitTrigger');
         $this->assertNotNull($liveEmitTrigger);
+    }
+
+    public function testTwigNamespaceKIsRegistered(): void
+    {
+        self::bootKernel();
+        $container = self::getContainer();
+
+        /** @var Environment $twig */
+        $twig = $container->get('twig');
+        $loader = $twig->getLoader();
+
+        // The @K namespace should be registered and point to bundle templates
+        $this->assertTrue($loader->exists('@K/Components/Dialog.html.twig'));
+        $this->assertTrue($loader->exists('@K/Components/Timer.html.twig'));
     }
 }

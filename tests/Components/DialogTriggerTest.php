@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kachnitel\ComponentsBundle\Tests\Components;
+
+use Kachnitel\ComponentsBundle\Components\DialogTrigger;
 
 class DialogTriggerTest extends ComponentTestCase
 {
@@ -14,8 +18,18 @@ class DialogTriggerTest extends ComponentTestCase
         $this->assertEquals('my-dialog', $component->dialogId);
     }
 
+    public function testDialogTriggerDefaultValues(): void
+    {
+        /** @var DialogTrigger $component */
+        $component = $this->factory->get('K:Components:DialogTrigger');
+
+        $this->assertEquals('', $component->icon);
+        $this->assertEquals('', $component->label);
+    }
+
     public function testDialogTriggerWithLabel(): void
     {
+        /** @var DialogTrigger $component */
         $component = $this->factory->get('K:Components:DialogTrigger');
         $component->dialogId = 'dialog-1';
         $component->label = 'Open Dialog';
@@ -25,10 +39,11 @@ class DialogTriggerTest extends ComponentTestCase
 
     public function testDialogTriggerWithIcon(): void
     {
+        /** @var DialogTrigger $component */
         $component = $this->factory->get('K:Components:DialogTrigger');
         $component->dialogId = 'dialog-2';
-        $component->icon = '🔔';
+        $component->icon = 'bell';
 
-        $this->assertEquals('🔔', $component->icon);
+        $this->assertEquals('bell', $component->icon);
     }
 }
