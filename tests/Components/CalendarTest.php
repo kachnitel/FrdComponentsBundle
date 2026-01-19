@@ -11,7 +11,7 @@ class CalendarTest extends ComponentTestCase
     public function testCalendarComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:Calendar');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(Calendar::class, $component);
     }
 
     public function testCalendarDefaultMinDayHeight(): void

@@ -11,7 +11,7 @@ class DialogTest extends ComponentTestCase
     public function testDialogComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:Dialog');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(Dialog::class, $component);
 
         // Set required properties
         $component->id = 'test-dialog';

@@ -11,7 +11,7 @@ class DialogTriggerTest extends ComponentTestCase
     public function testDialogTriggerComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:DialogTrigger');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(DialogTrigger::class, $component);
 
         // Set required properties
         $component->dialogId = 'my-dialog';

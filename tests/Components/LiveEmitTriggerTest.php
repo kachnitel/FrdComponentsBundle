@@ -11,7 +11,7 @@ class LiveEmitTriggerTest extends ComponentTestCase
     public function testLiveEmitTriggerComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:LiveEmitTrigger');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(LiveEmitTrigger::class, $component);
     }
 
     public function testLiveEmitTriggerDefaultValues(): void

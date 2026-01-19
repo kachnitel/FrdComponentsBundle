@@ -12,7 +12,7 @@ class TimerTest extends ComponentTestCase
     public function testTimerComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:Timer');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(Timer::class, $component);
     }
 
     public function testGetDurationWithZeroStartDuration(): void

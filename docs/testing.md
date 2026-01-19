@@ -35,7 +35,7 @@ class YourComponentTest extends ComponentTestCase
     public function testYourComponentCanBeCreated(): void
     {
         $component = $this->factory->get('K:Components:YourComponent');
-        $this->assertNotNull($component);
+        $this->assertInstanceOf(\App\Your\Component::class, $component);
     }
 
     public function testYourComponentWithProps(): void

@@ -29,6 +29,9 @@ class TestKernel extends Kernel
         ];
     }
 
+    /**
+     * @SuppressWarnings(UnusedFormalParameter)
+     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->loadFromExtension('framework', [

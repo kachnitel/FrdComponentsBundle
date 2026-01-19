@@ -22,7 +22,10 @@
     "symfony/phpunit-bridge": "^7.0",
     "symfony/browser-kit": "^7.0",
     "symfony/css-selector": "^7.0",
-    "symfony/twig-bundle": "^7.0"
+    "symfony/twig-bundle": "^7.0",
+    "phpstan/phpstan": "^2.0",
+    "phpstan/phpstan-symfony": "^2.0",
+    "phpmd/phpmd": "^2.15"
   },
   "autoload": {
     "psr-4": {
@@ -36,6 +39,13 @@
   },
   "scripts": {
     "test": "phpunit",
-    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .coverage"
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .coverage",
+    "phpstan": "phpstan analyse --level=6 --memory-limit=1G",
+    "phpmd": "phpmd src,tests text phpmd.xml",
+    "qa": [
+      "@phpstan",
+      "@phpmd",
+      "@test"
+    ]
   }
 }

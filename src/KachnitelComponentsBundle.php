@@ -45,6 +45,9 @@ class KachnitelComponentsBundle extends AbstractBundle
             ->setAutoconfigured(true);
     }
 
+    /**
+     * @SuppressWarnings(UnusedFormalParameter)
+     */
     public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void
     {
         // Register Twig paths

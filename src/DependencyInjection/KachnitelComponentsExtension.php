@@ -10,6 +10,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class KachnitelComponentsExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * @SuppressWarnings(UnusedFormalParameter)
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));

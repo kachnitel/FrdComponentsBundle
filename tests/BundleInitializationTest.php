@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Kachnitel\ComponentsBundle\Tests;
 
+use Kachnitel\ComponentsBundle\Components\Calendar;
+use Kachnitel\ComponentsBundle\Components\Dialog;
+use Kachnitel\ComponentsBundle\Components\DialogTrigger;
+use Kachnitel\ComponentsBundle\Components\LiveEmitTrigger;
+use Kachnitel\ComponentsBundle\Components\Timer;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\UX\TwigComponent\ComponentFactory;
 use Twig\Environment;
@@ -25,7 +30,7 @@ class BundleInitializationTest extends KernelTestCase
     public function testBundleIsRegistered(): void
     {
         self::bootKernel();
-        $container = self::getContainer();
+        // $container = self::getContainer();
 
         $bundles = self::$kernel->getBundles();
 
@@ -69,19 +74,19 @@ class BundleInitializationTest extends KernelTestCase
 
         // Test that components can be created via the factory
         $dialog = $componentFactory->get('K:Components:Dialog');
-        $this->assertNotNull($dialog);
+        $this->assertInstanceOf(Dialog::class, $dialog);
 
         $dialogTrigger = $componentFactory->get('K:Components:DialogTrigger');
-        $this->assertNotNull($dialogTrigger);
+        $this->assertInstanceOf(DialogTrigger::class, $dialogTrigger);
 
         $calendar = $componentFactory->get('K:Components:Calendar');
-        $this->assertNotNull($calendar);
+        $this->assertInstanceOf(Calendar::class, $calendar);
 
         $timer = $componentFactory->get('K:Components:Timer');
-        $this->assertNotNull($timer);
+        $this->assertInstanceOf(Timer::class, $timer);
 
         $liveEmitTrigger = $componentFactory->get('K:Components:LiveEmitTrigger');
-        $this->assertNotNull($liveEmitTrigger);
+        $this->assertInstanceOf(LiveEmitTrigger::class, $liveEmitTrigger);
     }
 
     public function testTwigNamespaceKIsRegistered(): void
