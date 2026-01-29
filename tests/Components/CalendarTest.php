@@ -55,4 +55,14 @@ class CalendarTest extends ComponentTestCase
         $component->month = 12;
         $this->assertEquals(12, $component->month);
     }
+
+    public function testCalendarRenders(): void
+    {
+        $rendered = $this->renderTwigComponent('K:Components:Calendar', [
+            'year' => 2026,
+            'month' => 1,
+        ]);
+
+        $this->assertCount(1, $rendered->crawler()->filter('.calendar'));
+    }
 }

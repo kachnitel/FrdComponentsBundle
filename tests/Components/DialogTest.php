@@ -67,4 +67,14 @@ class DialogTest extends ComponentTestCase
 
         $this->assertEquals('md-down', $component->fullscreen);
     }
+
+    public function testDialogRenders(): void
+    {
+        $rendered = $this->renderTwigComponent('K:Components:Dialog', [
+            'id' => 'test-dialog',
+            'label' => 'Test',
+        ]);
+
+        $this->assertCount(1, $rendered->crawler()->filter('dialog#test-dialog'));
+    }
 }

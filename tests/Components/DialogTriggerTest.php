@@ -46,4 +46,14 @@ class DialogTriggerTest extends ComponentTestCase
 
         $this->assertEquals('bell', $component->icon);
     }
+
+    public function testDialogTriggerRenders(): void
+    {
+        $rendered = $this->renderTwigComponent('K:Components:DialogTrigger', [
+            'dialogId' => 'test-dialog',
+            'label' => 'Open',
+        ]);
+
+        $this->assertCount(1, $rendered->crawler()->filter('button'));
+    }
 }

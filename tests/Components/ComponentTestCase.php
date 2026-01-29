@@ -5,9 +5,12 @@ namespace Kachnitel\ComponentsBundle\Tests\Components;
 use Kachnitel\ComponentsBundle\Tests\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\UX\TwigComponent\ComponentFactory;
+use Symfony\UX\TwigComponent\Test\InteractsWithTwigComponents;
 
 abstract class ComponentTestCase extends KernelTestCase
 {
+    use InteractsWithTwigComponents;
+
     protected ComponentFactory $factory;
 
     protected static function getKernelClass(): string
