@@ -1,5 +1,6 @@
 *~
 .coverage/
+composer.lock
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -33,3 +34,7 @@
 
 .phpunit.cache
 /.claude/
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
