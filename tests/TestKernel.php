@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kachnitel\ComponentsBundle\Tests;
 
 use Kachnitel\ComponentsBundle\KachnitelComponentsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\TwigBundle\TwigBundle;
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\UX\LiveComponent\LiveComponentBundle;
 use Symfony\UX\StimulusBundle\StimulusBundle;
@@ -30,18 +32,21 @@ class TestKernel extends Kernel
     }
 
     /**
+     * Symfony 7+ / 8 signature: ContainerConfigurator replaces the old
+     * (ContainerBuilder, LoaderInterface) pair that was removed in Symfony 8.
+     *
      * @SuppressWarnings(UnusedFormalParameter)
      */
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
+    protected function configureContainer(ContainerConfigurator $container, \Symfony\Component\Config\Loader\LoaderInterface $loader, ContainerBuilder $builder): void
     {
-        $container->loadFromExtension('framework', [
+        $container->extension('framework', [
             'secret' => 'test',
             'test' => true,
             'router' => ['utf8' => true],
             'http_method_override' => false,
         ]);
 
-        $container->loadFromExtension('twig', [
+        $container->extension('twig', [
             'default_path' => '%kernel.project_dir%/templates',
             'strict_variables' => true,
         ]);

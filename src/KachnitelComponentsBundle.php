@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kachnitel\ComponentsBundle;
 
 use Kachnitel\ComponentsBundle\Components\Calendar;
@@ -71,18 +73,20 @@ class KachnitelComponentsBundle extends AbstractBundle
         ]);
     }
 
+    /**
+     * Checks whether AssetMapper is available in the container.
+     *
+     * Works with Symfony 6.4, 7.x, and 8.x without relying on internal
+     * FrameworkBundle file paths that were removed in Symfony 8.
+     */
     private function isAssetMapperAvailable(ContainerBuilder $container): bool
     {
         if (!interface_exists(AssetMapperInterface::class)) {
             return false;
         }
 
-        // check that FrameworkBundle 6.3 or higher is installed
-        $bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
-        if (!isset($bundlesMetadata['FrameworkBundle'])) {
-            return false;
-        }
-
-        return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
+        // AssetMapper is part of FrameworkBundle; if the framework extension
+        // is registered the asset_mapper key is available since Symfony 6.3+.
+        return $container->hasExtension('framework');
     }
 }
