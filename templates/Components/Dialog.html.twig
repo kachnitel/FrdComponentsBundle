@@ -17,6 +17,7 @@
         type="button"
         onclick="document.getElementById('{{ id }}').close();"
         aria-label="Close"
+        {{ attributes.nested('close-button') }}
       >&#x274C;</button>
     </div>
     <div class="dialog-body">

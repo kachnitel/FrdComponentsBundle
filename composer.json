@@ -38,14 +38,14 @@
     }
   },
   "scripts": {
-    "test": "phpunit",
+    "phpunit": "phpunit",
     "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .coverage",
     "phpstan": "phpstan analyse --level=6 --memory-limit=1G",
     "phpmd": "phpmd src,tests text phpmd.xml",
-    "qa": [
+    "test": [
       "@phpstan",
       "@phpmd",
-      "@test"
+      "@phpunit"
     ]
   }
 }
