@@ -42,6 +42,25 @@ Display a running timer that updates every second:
 <twig:K:Components:Timer :startTime="timeEntry.startTime" />
 ```
 
+### Toast
+
+Render a toast region that responds to browser events:
+
+```twig
+<twig:K:Components:Toast />
+```
+
+From a Symfony UX Live Component, dispatch a notification:
+
+```php
+$this->dispatchBrowserEvent('toast.show', [
+  'message' => 'Please correct the errors below and try again.',
+  'type' => 'error',
+]);
+```
+
+See the [Toast documentation](docs/components/Toast.md) for custom events, duration, and styling.
+
 ### LiveEmitTrigger (Live Component)
 
 Emit events to other Live Components:
@@ -61,6 +80,7 @@ See the [full documentation](docs/index.md) for detailed usage and options.
 | [Calendar](docs/components/Calendar.md) | Twig | Monthly calendar grid with customizable day content |
 | [Dialog](docs/components/Dialog.md) | Twig | Native HTML dialog wrapper with Stimulus controller |
 | [DialogTrigger](docs/components/DialogTrigger.md) | Twig | Button to open a Dialog component |
+| [Toast](docs/components/Toast.md) | Twig | Event-driven notification region |
 | [Timer](docs/components/Timer.md) | Live | Auto-updating duration timer |
 | [LiveEmitTrigger](docs/components/LiveEmitTrigger.md) | Live | Button to emit events to Live Components |
 

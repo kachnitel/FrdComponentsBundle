@@ -11,6 +11,10 @@
       "dialog-trigger": {
         "main": "js/controllers/dialog-trigger_controller.js",
         "enabled": true
+      },
+      "toast": {
+        "main": "js/controllers/toast_controller.js",
+        "enabled": true
       }
     },
     "importmap": {

@@ -9,6 +9,7 @@ use Kachnitel\ComponentsBundle\Components\Dialog;
 use Kachnitel\ComponentsBundle\Components\DialogTrigger;
 use Kachnitel\ComponentsBundle\Components\LiveEmitTrigger;
 use Kachnitel\ComponentsBundle\Components\Timer;
+use Kachnitel\ComponentsBundle\Components\Toast;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -43,6 +44,10 @@ class KachnitelComponentsBundle extends AbstractBundle
             ->setAutoconfigured(true);
 
         $container->register(LiveEmitTrigger::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $container->register(Toast::class)
             ->setAutowired(true)
             ->setAutoconfigured(true);
     }
@@ -81,6 +86,7 @@ class KachnitelComponentsBundle extends AbstractBundle
      */
     private function isAssetMapperAvailable(ContainerBuilder $container): bool
     {
+        /** @disregard P1009 AssetMapper is optional */
         if (!interface_exists(AssetMapperInterface::class)) {
             return false;
         }

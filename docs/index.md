@@ -9,6 +9,7 @@ Standard Twig components that render HTML with customizable blocks and attribute
 - [Calendar](components/Calendar.md) - Monthly calendar grid with customizable day content
 - [Dialog](components/Dialog.md) - Native HTML `<dialog>` wrapper with Stimulus controller
 - [DialogTrigger](components/DialogTrigger.md) - Button to trigger Dialog opening
+- [Toast](components/Toast.md) - Event-driven notifications with Stimulus controller
 
 ## Live Components
 

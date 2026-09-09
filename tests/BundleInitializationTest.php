@@ -9,6 +9,7 @@ use Kachnitel\ComponentsBundle\Components\Dialog;
 use Kachnitel\ComponentsBundle\Components\DialogTrigger;
 use Kachnitel\ComponentsBundle\Components\LiveEmitTrigger;
 use Kachnitel\ComponentsBundle\Components\Timer;
+use Kachnitel\ComponentsBundle\Components\Toast;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\UX\TwigComponent\ComponentFactory;
 use Twig\Environment;
@@ -68,6 +69,7 @@ class BundleInitializationTest extends KernelTestCase
         $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Calendar'));
         $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Timer'));
         $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\LiveEmitTrigger'));
+        $this->assertTrue($container->has('Kachnitel\ComponentsBundle\Components\Toast'));
 
         /** @var ComponentFactory $componentFactory */
         $componentFactory = $container->get('ux.twig_component.component_factory');
@@ -87,6 +89,9 @@ class BundleInitializationTest extends KernelTestCase
 
         $liveEmitTrigger = $componentFactory->get('K:Components:LiveEmitTrigger');
         $this->assertInstanceOf(LiveEmitTrigger::class, $liveEmitTrigger);
+
+        $toast = $componentFactory->get('K:Components:Toast');
+        $this->assertInstanceOf(Toast::class, $toast);
     }
 
     public function testTwigNamespaceKIsRegistered(): void
@@ -101,5 +106,6 @@ class BundleInitializationTest extends KernelTestCase
         // The @K namespace should be registered and point to bundle templates
         $this->assertTrue($loader->exists('@K/Components/Dialog.html.twig'));
         $this->assertTrue($loader->exists('@K/Components/Timer.html.twig'));
+        $this->assertTrue($loader->exists('@K/Components/Toast.html.twig'));
     }
 }
